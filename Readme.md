@@ -1,0 +1,1 @@
+I wanted to export model to .onnx format, but library which I used is currently broken: https://github.com/onnx/tensorflow-onnx/issues/2373
