@@ -1,17 +1,20 @@
 import sys
 
 from PySide6 import QtWidgets
-from PySide6.QtGui import QGuiApplication
-from PySide6.QtQml import QQmlApplicationEngine
+from PySide6.QtWidgets import QApplication
 
-from src.widgets.MyWidget import MyWidget
+from src.widgets.MainWindow import MainWindow
 
 
 def App():
     app = QtWidgets.QApplication([])
+    window = MainWindow()
 
-    widget = MyWidget()
-    widget.resize(800, 600)
-    widget.show()
+    #screen = QApplication.primaryScreen()
+    #size = screen.availableGeometry()
+    #window.resize(size.width(), size.height())
 
+    window.resize(800, 600)
+
+    window.show()
     sys.exit(app.exec())
