@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QMainWindow, QPushButton, QHBoxLayout, QLabel, QVB
 
 from src.SignLanguageModel import SignLanguageModel
 from src.widgets.CameraWidget import CameraWidget
+from src.widgets.ControlPanelWidget import ControlPanel
 
 
 class MainWindow(QMainWindow):
@@ -9,13 +10,15 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Sign Language Recognition")
 
-        layout = QHBoxLayout()
-        label = QLabel("Test")
-
         model = SignLanguageModel('models/model.keras')
 
-        layout.addWidget(CameraWidget(model))
-        layout.addWidget(label)
+        self.cameraWidget = CameraWidget(model)
+        self.controlPanel = ControlPanel(self.cameraWidget)
+        self.cameraWidget.control_panel = self.controlPanel
+
+        layout = QHBoxLayout()
+        layout.addWidget(self.cameraWidget)
+        layout.addWidget(self.controlPanel)
 
         container = QWidget()
         container.setLayout(layout)
