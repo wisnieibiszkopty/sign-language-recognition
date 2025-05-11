@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QPushButton, QHBoxLayout, QLabel, QVBoxLayout, QWidget
 
+from src.SignLanguageModel import SignLanguageModel
 from src.widgets.CameraWidget import CameraWidget
 
 
@@ -11,7 +12,9 @@ class MainWindow(QMainWindow):
         layout = QHBoxLayout()
         label = QLabel("Test")
 
-        layout.addWidget(CameraWidget())
+        model = SignLanguageModel('models/model.keras')
+
+        layout.addWidget(CameraWidget(model))
         layout.addWidget(label)
 
         container = QWidget()
